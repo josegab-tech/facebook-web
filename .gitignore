@@ -1,0 +1,20 @@
+# Arquivos compilados pelo Eclipse/Maven
+/build/
+/target/
+/bin/
+*.class
+
+# Arquivos de configurações locais da IDE (Eclipse/STS)
+.settings/
+.classpath
+.project
+
+# Arquivos de log e temporários do servidor/sistema
+/Servers/
+*.log
+*.tmp
+*.bak
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
