@@ -24,7 +24,7 @@ public class loginController extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		if(session != null) session.invalidate();
 		
-		resp.sendRedirect("/facebok/login.jsp");
+		resp.sendRedirect("/facebook/login.jsp");
 	}
 	
 	@Override
@@ -37,7 +37,8 @@ public class loginController extends HttpServlet {
 		
 		if(userEmail.isBlank() || userPW.isBlank()) {
 			resp.sendRedirect("/facebook/login.jsp?erro=true");
-			
+			return;
+			}
 		//Carregar o usuario do banco pelo email
 		UserDAO dao = DAOFactory.createDAO(UserDAO.class);
 		User userToLogin = null;
@@ -57,13 +58,12 @@ public class loginController extends HttpServlet {
 				userToLogin.getPasswordHash()) == true) {
 			req.getSession().setAttribute("user_logged", userToLogin);
 			resp.sendRedirect("/facebook/");
-			
+			return;
 		}else {resp.sendRedirect("/facebook/login.jsp?erro=true");}
-			
+			return;
 		
 		//Redirecionar para a index se senha ok
 		
 		//Redirecionar para login se falhar
 		}
 	}
-}
