@@ -25,9 +25,9 @@
       </nav>
 
       <main class="flex-grow-1 d-flex justify-content-center align-items-center">
-      
-        <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
         
+        <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+          
           <h2 class="text-center mb-4">Login</h2>
           
           <form action="/facebook/login" method="POST">

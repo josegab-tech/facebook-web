@@ -19,6 +19,14 @@ public class User {
 		setEmail("");
 		setPassword("");
 	}
+	
+	public String getPasswordHash() {
+		return passwordHash;
+	}
+	
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
 
 	public String getName() {
 		return name;
@@ -44,12 +52,12 @@ public class User {
 		this.email = email;
 	}
 
-	public int getId() {
-		return id;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
-	public void SetId(int id) {
-		this.id = id;
+	public int getId() {
+		return id;
 	}
 	
 	public String getPassword() {
@@ -59,15 +67,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getPasswordHash() {
-		return passwordHash;
-	}
-	
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
-	}
-	
-	
-	
 }

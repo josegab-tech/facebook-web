@@ -7,9 +7,11 @@ public class DAOFactory {
 	
 	private static Map<Class, Object> listDAOsInterfaces = new HashMap<Class, Object>();
 	
-	private DAOFactory() {
-		// Para impedir instanciação
-	}
+	
+    private DAOFactory() {
+    	// Para impedir instanciação
+    }
+	
 	// Para o DAOFactory funcionar para suas classes de domínio, adicione na 
 	// lista suas interfaces e classes DAO na listDAOsInterfaces
 	static {
