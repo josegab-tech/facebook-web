@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Cadastro de Usuário - Facebook CRUD</title>
+	<title>Cadastro de Post - Facebook CRUD</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-icons.css">
 </head>
@@ -16,72 +16,43 @@
 			<div class="col-md-8">
 				<h1>Cadastro / Edição de Post</h1>
 				
-				<form action="${pageContext.request.contextPath}/posts/save" method="GET">
-					
-					<!-- Campo oculto passando o ID (essencial para definir se é SAVE ou UPDATE) -->
-					<input type="hidden" 
-						   id="user_id_id" 
-						   name="user_id" 
-						   value="${user.id}">
-					
+				<form action="${pageContext.request.contextPath}/post/save" method="POST">
+					<!-- Campo oculto para o ID do Post -->
+					<input type="hidden"
+								id="post_id_id"
+								name="post_id"
+								value="${post.id}">
+					<!-- Select para escolher o Autor -->
 					<div class="mb-3">
-						<label for="user_name_id" class="form-label">Nome</label>
-						<input id="user_name_id" 
-							   type="text" 
-							   name="user_name" 
-							   class="form-control" 
-							   value="${user.name}">
+						<label for="post_user_id" class="form-label">Autor (Usuário)</label>
+						<select id="post_user_id" name="user_id" class="form-select" required>
+							<option value="">Selecione um Usuário</option>
+							<c:forEach var="u" items="${users_list}">
+								<option value="${u.id}" ${post.user.id == u.id ? 'selected' : ''}>
+									${u.name} (${u.email})
+								</option>
+							</c:forEach>
+						</select>
 					</div>
 					
+					<!-- Conteúdo da Publicação -->
 					<div class="mb-3">
-						<label>Gênero</label>
-						
-						<div class="mb-1">
-							<input id="user_gender_m_id" 
-								   type="radio" 
-								   name="user_gender" 
-								   value="M" 
-								   class="form-check-input" 
-								   ${user.gender == 'M' ? 'checked' : ''}/>
-							<label class="form-check-label" for="user_gender_m_id">Masculino</label>
-						</div>
-						
-						<div class="mb-1">
-							<input id="user_gender_f_id" 
-								   type="radio" 
-								   name="user_gender" 
-								   value="F" 
-								   class="form-check-input" 
-								   ${user.gender == 'F' ? 'checked' : ''}/>
-							<label class="form-check-label" for="user_gender_f_id">Feminino</label>
-						</div>
+						<label for="post_content_id" class="form-label">Conteúdo do Post</label>
+						<textarea id="post_content_id"
+									name="content"
+									class="form-control"
+									rows="4"
+									required>${post.content}</textarea>
 					</div>
 					
-					<div class="mb-3">
-						<label for="user_email_id" class="form-label">Email</label>
-						<input id="user_email_id" 
-							   type="email" 
-							   name="user_email" 
-							   class="form-control" 
-							   value="${user.email}">
-					</div>
-					
-					<div class="mb-3">
-						<label for="user_pw_id" class="form-label">Senha</label>
-						<input id="user_pw_id" 
-							   type="password" 
-							   name="user_pw" 
-							   class="form-control" 
-							   value="${user.getPassword()}">
-					</div>
-					
-					<button type="submit" class="btn btn-primary">Salvar</button>
-					<a href="${pageContext.request.contextPath}/users" class="btn btn-secondary">Cancelar</a>
+					<button type="submit" class="btn btn-primary">Salvar</button>	
+					<a href="${pageContext.request.contextPath}/post" class="btn btn-secondary">Cancelar</a>
 				</form>
 			</div>
 			
 			<div class="col-md-2"></div>
 		</div>
-	</div>
+	
+	
 </body>
 </html>
