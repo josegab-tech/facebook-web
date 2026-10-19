@@ -16,7 +16,7 @@
 			<div class="col-md-8">
 				<h1>Cadastro / Edição de Post</h1>
 				
-				<form action="${pageContext.request.contextPath}/post/save" method="POST">
+				<form action="${pageContext.request.contextPath}/posts/save" method="POST">
 					<!-- Campo oculto para o ID do Post -->
 					<input type="hidden"
 								id="post_id_id"
@@ -46,7 +46,7 @@
 					</div>
 					
 					<button type="submit" class="btn btn-primary">Salvar</button>	
-					<a href="${pageContext.request.contextPath}/post" class="btn btn-secondary">Cancelar</a>
+					<a href="${pageContext.request.contextPath}/posts" class="btn btn-secondary">Cancelar</a>
 				</form>
 			</div>
 			

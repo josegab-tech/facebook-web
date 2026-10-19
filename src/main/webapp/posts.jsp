@@ -41,9 +41,8 @@
 				</table>
 				
 		</div>
-		<a href="post_form.jsp" class="btn btn-primary">
-					Cadastrar Post
-				</a>
+		
+	<a href="${pageContext.request.contextPath}/posts/form" class="btn btn-success">Novo Post</a>
 	</div>
 	
 
