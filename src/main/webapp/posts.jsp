@@ -12,12 +12,12 @@
 <body>
 
 	<div class="container">
-	<div class="col-md-5  mt-3">
-	<a class="btn btn-secondary" 
-				   href="${pageContext.request.contextPath}/">
-					Home
-		</a>
-	</div>
+		<div class="col-md-5  mt-3">
+			<a class="btn btn-secondary" 
+				href="${pageContext.request.contextPath}/">
+				Home
+			</a>
+		</div>
 	
 		<div class="row">
 			<h2>Posts</h2>
@@ -25,16 +25,23 @@
 				<thead>
 					<tr>
 						<th scope="col">Id</th>
+						<th scope="col">Nome</th>
 						<th scope="col">Conteúdo</th>
 						<th scope="col">Data</th>
+						<th scope="col">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="post" items="${posts_list}">
 						<tr>
 							<th scope="row">${post.getId()}</th>
+							<td>${post.getUser().getName()}</td>
 							<td>${post.getContent()}</td>
 							<td>${post.getPostDate()}</td>
+							<td>
+							<a href="${pageContext.request.contextPath}/posts/update?postId=${post.id}" class="bi bi-pencil-square"></a>
+							<a href="${pageContext.request.contextPath}/posts/delete?postId=${post.id}" class="bi bi-trash" onclick="return confirm('Deseja realmente excluir este post?');"></a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -42,7 +49,7 @@
 				
 		</div>
 		
-	<a href="${pageContext.request.contextPath}/posts/form" class="btn btn-success">Novo Post</a>
+	<a href="${pageContext.request.contextPath}/posts/form" class="btn btn-primary">Cadastrar Post</a>
 	</div>
 	
 
