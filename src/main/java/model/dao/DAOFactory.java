@@ -17,6 +17,7 @@ public class DAOFactory {
 	static {
 		listDAOsInterfaces.put(PostDAO.class, new MySQLPostDAO());
 		listDAOsInterfaces.put(UserDAO.class, new MySQLUserDAO());
+		listDAOsInterfaces.put(SponsorDAO.class, new MySQLSponsorDAO());
 	}
 	
 	@SuppressWarnings("unchecked")

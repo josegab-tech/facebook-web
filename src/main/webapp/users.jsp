@@ -55,7 +55,7 @@
 					</tbody>
 				</table>
 				
-				<a href="user_form.jsp" class="btn btn-primary">
+				<a href="users_form.jsp" class="btn btn-primary">
 					Cadastrar Usuário
 				</a>
 			</div>

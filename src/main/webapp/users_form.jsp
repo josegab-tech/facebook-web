@@ -98,6 +98,7 @@
 					          class="btn btn-primary">
 					  	Cadastrar
 					  </button>
+					  <a href="${pageContext.request.contextPath}/users" class="btn btn-secondary">Cancelar</a>
 				</form>
 			</div>
 			

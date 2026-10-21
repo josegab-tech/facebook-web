@@ -12,8 +12,8 @@
 		<div class="d-flex justify-content-between align-items-center mb-3">
 			<h1>Patrocinadores</h1>
 			<div>
-				
-				<a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Voltar</a>
+				<a href="${pageContext.request.contextPath}/sponsors/form" class="btn btn-primary">Novo Patrocinador</a>
+				<a href="/facebook" class="btn btn-secondary">Voltar</a>
 			</div>
 		</div>
 
@@ -24,16 +24,20 @@
 					<th>Nome</th>
 					<th>Investimento (R$)</th>
 					<th>Usuário Responsável</th>
+					<th class="text-center">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
-				
 				<c:forEach var="s" items="${sponsors_list}">
 					<tr>
 						<td>${s.id}</td>
 						<td>${s.name}</td>
 						<td>${s.investment}</td>
-						<td>${s.user.name}</td> 
+						<td>${s.user.name}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/posts/update?postId=${post.id}" class="bi bi-pencil-square"></a>
+							<a href="${pageContext.request.contextPath}/posts/delete?postId=${post.id}" class="bi bi-trash" onclick="return confirm('Deseja realmente excluir este post?');"></a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
