@@ -32,7 +32,7 @@ public class SponsorsController extends HttpServlet {
 
         switch (action) {
         case "/facebook/sponsors": {
-            loadSponsors(req);
+            loadSponsorsList(req); // Carrega a LISTA completa
             RequestDispatcher rd = req.getRequestDispatcher("/sponsors.jsp");
             rd.forward(req, resp);
             break;
@@ -44,7 +44,7 @@ public class SponsorsController extends HttpServlet {
             break;
         }
         case "/facebook/sponsors/update": {
-            loadSponsor(req);
+            loadSingleSponsor(req); // Carrega UM patrocinador individual
             RequestDispatcher rd = req.getRequestDispatcher("/sponsors_form.jsp");
             rd.forward(req, resp);
             break;
@@ -93,7 +93,8 @@ public class SponsorsController extends HttpServlet {
         }
     }
 
-    private void loadSponsor(HttpServletRequest req) {
+
+    private void loadSingleSponsor(HttpServletRequest req) {
         String sponsorIdStr = req.getParameter("sponsorId");
         if (sponsorIdStr != null && !sponsorIdStr.isBlank()) {
             int sponsorId = Integer.parseInt(sponsorIdStr);
@@ -101,18 +102,15 @@ public class SponsorsController extends HttpServlet {
             SponsorDAO sponsorDao = DAOFactory.createDAO(SponsorDAO.class);
             UserDAO userDao = DAOFactory.createDAO(UserDAO.class);
 
-            Sponsor sponsorToBeUpdated = null;
-            List<User> users = List.of();
-
             try {
-                sponsorToBeUpdated = sponsorDao.findById(sponsorId);
-                users = userDao.listAll();
+                Sponsor sponsorToBeUpdated = sponsorDao.findById(sponsorId);
+                List<User> users = userDao.listAll();
+
+                req.setAttribute("sponsor", sponsorToBeUpdated);
+                req.setAttribute("users_list", users);
             } catch (ModelException e) {
                 e.printStackTrace();
             }
-
-            req.setAttribute("sponsor", sponsorToBeUpdated);
-            req.setAttribute("users_list", users);
         }
     }
 
@@ -167,7 +165,8 @@ public class SponsorsController extends HttpServlet {
         }
     }
 
-    private void loadSponsors(HttpServletRequest req) {
+   
+    private void loadSponsorsList(HttpServletRequest req) {
         SponsorDAO dao = DAOFactory.createDAO(SponsorDAO.class);
 
         List<Sponsor> sponsors = List.of();

@@ -6,14 +6,17 @@
 	<meta charset="UTF-8">
 	<title>Patrocinadores - Facebook CRUD</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 	<div class="container mt-4">
 		<div class="d-flex justify-content-between align-items-center mb-3">
 			<h1>Patrocinadores</h1>
 			<div>
-				<a href="${pageContext.request.contextPath}/sponsors/form" class="btn btn-primary">Novo Patrocinador</a>
-				<a href="/facebook" class="btn btn-secondary">Voltar</a>
+				<a href="${pageContext.request.contextPath}/sponsors/form" class="btn btn-primary">
+					<i class="bi bi-plus-lg"></i> Novo Patrocinador
+				</a>
+				<a href="/facebook" class="btn btn-secondary">Home</a>
 			</div>
 		</div>
 
@@ -34,10 +37,11 @@
 						<td>${s.name}</td>
 						<td>${s.investment}</td>
 						<td>${s.user.name}</td>
-						<td>
-							<a href="${pageContext.request.contextPath}/posts/update?postId=${post.id}" class="bi bi-pencil-square"></a>
-							<a href="${pageContext.request.contextPath}/posts/delete?postId=${post.id}" class="bi bi-trash" onclick="return confirm('Deseja realmente excluir este post?');"></a>
+						<td class="text-center">
+    					<a href="${pageContext.request.contextPath}/sponsors/update?sponsorId=${s.id}" class="bi bi-pencil-square" title="Editar"></a>
+    					<a href="${pageContext.request.contextPath}/sponsors/delete?sponsorId=${s.id}" class="bi bi-trash" onclick="return confirm('Deseja realmente excluir este patrocinador?');" title="Excluir"></a>
 						</td>
+						
 					</tr>
 				</c:forEach>
 			</tbody>
